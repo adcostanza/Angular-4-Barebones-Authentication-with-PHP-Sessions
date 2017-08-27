@@ -4,14 +4,14 @@ session_start();
 $rawBody = file_get_contents("php://input"); // Read body
 
 
-if($rawBody != "") {
+if($rawBody != "") { //if post data is present
 require("users.php");
 if(sizeof($users) > 0) {
 	$user_list = json_decode($users);
 }
 
 	$data = json_decode($rawBody);
-	$user = $data->user;
+	$user = $data->user; //
 	$pass = $data->pass;
 	$auth = false;
 	foreach($user_list as $u) {
@@ -28,15 +28,6 @@ if(sizeof($users) > 0) {
 		$_SESSION['auth'] = 0;
 		$_SESSION['user'] = 'none';
 	}
-	
-	
-
-
-//$user['user'] = 'ashley';
-//$user['pass'] = password_hash("tacos",PASSWORD_DEFAULT);
-//echo json_encode($user);
-
-
 } else {
 	if($_SESSION['auth'] == 0) {
 		echo '{"user":"none", "auth":"0"}';

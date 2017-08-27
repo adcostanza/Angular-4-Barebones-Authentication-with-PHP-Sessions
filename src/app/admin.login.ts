@@ -18,7 +18,7 @@ export class AdminLogin implements OnInit {
 		console.log(form.user);
 		this.authService.login(form.user, form.pass).subscribe(auth =>{
 			if(auth) {
-				this.router.navigate(['/admin']);
+				this.router.navigate(['/restricted']);
 			}
 			//navigate to admin if auth yes
 		});
@@ -26,7 +26,7 @@ export class AdminLogin implements OnInit {
 	ngOnInit(): void {
 		this.authService.checkAuth().subscribe(auth =>{
 			if(auth) {
-				this.router.navigate(['/admin']);
+				this.router.navigate(['/restricted']);
 			}
 			//navigate to admin if auth yes
 		});

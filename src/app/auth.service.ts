@@ -32,8 +32,6 @@ export class AuthService {
 			}).catch(() => {
 				console.log("Could not login");
 				return Observable.of(false);
-			});;
+			});
 	}
-		
-	
 }
